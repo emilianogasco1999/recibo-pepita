@@ -1,5 +1,7 @@
 export interface ReceiptProps {
   personName: string;
+  dni: string;
+  phone: string;
   dressName: string;
   eventDate: string;
   price: number;
@@ -15,6 +17,14 @@ export class Receipt {
 
   get personName(): string {
     return this.props.personName.trim();
+  }
+
+  get dni(): string {
+    return this.props.dni.trim();
+  }
+
+  get phone(): string {
+    return this.props.phone.trim();
   }
 
   get dressName(): string {

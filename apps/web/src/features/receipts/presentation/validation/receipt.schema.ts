@@ -6,6 +6,14 @@ export const receiptSchema = z
       .string()
       .trim()
       .min(2, 'Ingresá el nombre de la persona'),
+    dni: z
+      .string()
+      .trim()
+      .min(6, 'Ingresá un DNI válido'),
+    phone: z
+      .string()
+      .trim()
+      .min(6, 'Ingresá un número de teléfono válido'),
     dressName: z
       .string()
       .trim()

@@ -33,6 +33,8 @@ export function ReceiptForm({
     resolver: zodResolver(receiptSchema),
     defaultValues: {
       personName: defaultValues?.personName ?? '',
+      dni: defaultValues?.dni ?? '',
+      phone: defaultValues?.phone ?? '',
       dressName: defaultValues?.dressName ?? '',
       eventDate: defaultValues?.eventDate ?? '',
       price: defaultValues?.price ?? ('' as unknown as number),
@@ -50,6 +52,8 @@ export function ReceiptForm({
   const handleClear = () => {
     reset({
       personName: '',
+      dni: '',
+      phone: '',
       dressName: '',
       eventDate: '',
       price: '' as unknown as number,
@@ -76,6 +80,25 @@ export function ReceiptForm({
           placeholder="Ej: Vestido Esmeralda Largo"
           error={errors.dressName?.message}
           {...register('dressName')}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <InputField
+          label="DNI"
+          type="text"
+          inputMode="numeric"
+          placeholder="Ej: 40123456"
+          error={errors.dni?.message}
+          {...register('dni')}
+        />
+
+        <InputField
+          label="Número de teléfono"
+          type="tel"
+          placeholder="Ej: 11 2345-6789"
+          error={errors.phone?.message}
+          {...register('phone')}
         />
       </div>
 
