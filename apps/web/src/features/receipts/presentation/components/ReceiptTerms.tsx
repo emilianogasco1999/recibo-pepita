@@ -48,6 +48,14 @@ export function ReceiptTerms() {
           devolverla en las mismas condiciones generales en las que fue
           entregada.
         </li>
+        <li>
+          <strong className="font-semibold text-neutral-900 dark:text-neutral-100 print:text-neutral-900">
+            Importante:
+          </strong>{" "}
+          La seña no es reembolsable en caso de cancelación por parte del
+          cliente, ya que, una vez realizada la reserva, el vestido deja de
+          ofrecerse a otras clientas para la fecha solicitada.
+        </li>
       </ol>
 
       <p className="mt-4 print:mt-2 text-center font-serif text-sm print:text-xs font-semibold text-[#fa0c84]">
