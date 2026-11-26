@@ -158,14 +158,16 @@ export function ReceiptForm({
             </span>
           </div>
 
-          <div className="flex items-baseline justify-between text-xs">
-            <span className="text-neutral-600 dark:text-neutral-400">
-              Seña entregada
-            </span>
-            <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-400">
-              - {formatCurrency(watchedDeposit)}
-            </span>
-          </div>
+          {watchedDeposit > 0 && (
+            <div className="flex items-baseline justify-between text-xs">
+              <span className="text-neutral-600 dark:text-neutral-400">
+                Seña entregada
+              </span>
+              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+                - {formatCurrency(watchedDeposit)}
+              </span>
+            </div>
+          )}
 
           <div className="mt-2 flex items-baseline justify-between rounded-xl bg-neutral-100 dark:bg-neutral-800 px-3.5 sm:px-4 py-3 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700">
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">

@@ -26,16 +26,13 @@ export const receiptSchema = z
       .min(0, 'El precio no puede ser negativo'),
     deposit: z.coerce
       .number({ invalid_type_error: 'Ingresá una seña válida' })
-      .min(0, 'La seña no puede ser negativa'),
-    deliveryDate: z
-      .string()
-      .min(1, 'Seleccioná el día de entrega'),
-    returnDate: z
-      .string()
-      .min(1, 'Seleccioná el día de devolución'),
+      .min(0, 'La seña no puede ser negativa')
+      .optional(),
+    deliveryDate: z.string().optional(),
+    returnDate: z.string().optional(),
     observation: z.string().optional(),
   })
-  .refine((data) => data.deposit <= data.price, {
+  .refine((data) => (data.deposit ?? 0) <= data.price, {
     message: 'La seña no puede ser mayor al precio total',
     path: ['deposit'],
   });
