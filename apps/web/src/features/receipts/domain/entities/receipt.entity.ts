@@ -5,9 +5,9 @@ export interface ReceiptProps {
   dressName: string;
   eventDate: string;
   price: number;
-  deposit: number;
-  deliveryDate: string;
-  returnDate: string;
+  deposit?: number;
+  deliveryDate?: string;
+  returnDate?: string;
   observation?: string;
   issuedAt?: string;
 }
@@ -40,19 +40,19 @@ export class Receipt {
   }
 
   get deposit(): number {
-    return this.props.deposit;
+    return this.props.deposit ?? 0;
   }
 
   get remainingBalance(): number {
-    return Math.max(0, this.props.price - this.props.deposit);
+    return Math.max(0, this.props.price - this.deposit);
   }
 
   get deliveryDate(): string {
-    return this.props.deliveryDate;
+    return this.props.deliveryDate?.trim() ?? '';
   }
 
   get returnDate(): string {
-    return this.props.returnDate;
+    return this.props.returnDate?.trim() ?? '';
   }
 
   get observation(): string {

@@ -125,21 +125,25 @@ export function ReceiptCard({ receipt }: ReceiptCardProps) {
           </span>
         </div>
 
-        <div className="flex items-baseline justify-between gap-2 sm:gap-4">
-          <span className="shrink-0 text-neutral-500">Día de entrega</span>
-          <span className="min-w-[16px] flex-1 border-b border-dotted border-neutral-300" />
-          <span className="shrink-0 text-right font-semibold text-neutral-900">
-            {formatDate(receipt.deliveryDate)}
-          </span>
-        </div>
+        {receipt.deliveryDate && (
+          <div className="flex items-baseline justify-between gap-2 sm:gap-4">
+            <span className="shrink-0 text-neutral-500">Día de entrega</span>
+            <span className="min-w-[16px] flex-1 border-b border-dotted border-neutral-300" />
+            <span className="shrink-0 text-right font-semibold text-neutral-900">
+              {formatDate(receipt.deliveryDate)}
+            </span>
+          </div>
+        )}
 
-        <div className="flex items-baseline justify-between gap-2 sm:gap-4">
-          <span className="shrink-0 text-neutral-500">Día de devolución</span>
-          <span className="min-w-[16px] flex-1 border-b border-dotted border-neutral-300" />
-          <span className="shrink-0 text-right font-semibold text-neutral-900">
-            {formatDate(receipt.returnDate)}
-          </span>
-        </div>
+        {receipt.returnDate && (
+          <div className="flex items-baseline justify-between gap-2 sm:gap-4">
+            <span className="shrink-0 text-neutral-500">Día de devolución</span>
+            <span className="min-w-[16px] flex-1 border-b border-dotted border-neutral-300" />
+            <span className="shrink-0 text-right font-semibold text-neutral-900">
+              {formatDate(receipt.returnDate)}
+            </span>
+          </div>
+        )}
       </section>
 
       <AsteriskDivider />
@@ -153,12 +157,14 @@ export function ReceiptCard({ receipt }: ReceiptCardProps) {
           </span>
         </div>
 
-        <div className="flex items-baseline justify-between text-xs">
-          <span className="text-neutral-600">Seña entregada</span>
-          <span className="text-sm font-semibold text-emerald-700">
-            - {formatCurrency(receipt.deposit)}
-          </span>
-        </div>
+        {receipt.deposit > 0 && (
+          <div className="flex items-baseline justify-between text-xs">
+            <span className="text-neutral-600">Seña entregada</span>
+            <span className="text-sm font-semibold text-emerald-700">
+              - {formatCurrency(receipt.deposit)}
+            </span>
+          </div>
+        )}
 
         <div className="mt-3 print:mt-1.5 flex items-baseline justify-between rounded-xl bg-neutral-100 px-3.5 sm:px-4 py-3 sm:py-3.5 print:py-2 text-neutral-900 border border-neutral-200">
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">
@@ -170,19 +176,23 @@ export function ReceiptCard({ receipt }: ReceiptCardProps) {
         </div>
       </section>
 
-      <AsteriskDivider />
+      {receipt.observation && (
+        <>
+          <AsteriskDivider />
 
-      {/* Observaciones */}
-      <section className="space-y-2 print:space-y-1 font-mono text-xs">
-        <div className="flex items-center justify-between text-[11px] text-neutral-500">
-          <span className="font-bold uppercase tracking-wider">
-            Observaciones
-          </span>
-        </div>
-        <div className="min-h-[60px] print:min-h-[38px] whitespace-pre-wrap rounded-xl border border-dashed border-neutral-300 bg-neutral-50/80 p-3 sm:p-3.5 print:p-2 text-xs leading-relaxed text-neutral-700">
-          {receipt.observation || "Sin observaciones adicionales."}
-        </div>
-      </section>
+          {/* Observaciones */}
+          <section className="space-y-2 print:space-y-1 font-mono text-xs">
+            <div className="flex items-center justify-between text-[11px] text-neutral-500">
+              <span className="font-bold uppercase tracking-wider">
+                Observaciones
+              </span>
+            </div>
+            <div className="min-h-[60px] print:min-h-[38px] whitespace-pre-wrap rounded-xl border border-dashed border-neutral-300 bg-neutral-50/80 p-3 sm:p-3.5 print:p-2 text-xs leading-relaxed text-neutral-700">
+              {receipt.observation}
+            </div>
+          </section>
+        </>
+      )}
 
       {/* Borde troquelado inferior tipo ticket */}
       <ScallopEdge position="bottom" />
